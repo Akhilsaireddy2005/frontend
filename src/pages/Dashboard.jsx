@@ -25,7 +25,7 @@ export default function Dashboard() {
     return (
         <div className="page-body animate-in">
             {/* Welcome */}
-            <div style={{ marginBottom: 40, animationDelay: '0.1s' }} className="animate-in">
+            <div style={{ marginBottom: 'clamp(28px, 5vw, 48px)', animationDelay: '0.1s' }} className="animate-in">
                 <h2 className="page-title text-gradient">
                     Welcome back, {user?.name?.split(' ')[0]} 👋
                 </h2>
@@ -35,13 +35,13 @@ export default function Dashboard() {
             </div>
 
             {/* Stats */}
-            <div className="grid-cols-4 animate-in stagger-1" style={{ marginBottom: 40 }}>
+            <div className="grid-cols-4 animate-in stagger-1" style={{ marginBottom: 'clamp(28px, 5vw, 48px)' }}>
                 {statCards.map(({ label, value, icon, color }) => (
                     <div key={label} className="glass-card stat-card">
                         <div style={{
-                            width: 48, height: 48, borderRadius: 14, marginBottom: 16,
+                            width: 'clamp(40px, 8vw, 48px)', height: 'clamp(40px, 8vw, 48px)', borderRadius: 'clamp(10px, 2vw, 14px)', marginBottom: 'clamp(12px, 2vw, 16px)',
                             background: `${color}15`, border: `1px solid ${color}30`,
-                            display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24,
+                            display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 'clamp(20px, 5vw, 24px)',
                             boxShadow: 'var(--shadow-sm)'
                         }}>{icon}</div>
                         <div className="stat-value">{loading ? '…' : value}</div>
@@ -51,8 +51,8 @@ export default function Dashboard() {
             </div>
 
             {/* Quick Actions */}
-            <div className="animate-in stagger-2" style={{ marginBottom: 40 }}>
-                <h3 style={{ fontSize: 20, fontWeight: 700, marginBottom: 20, fontFamily: 'Outfit, sans-serif' }}>Quick Actions</h3>
+            <div className="animate-in stagger-2" style={{ marginBottom: 'clamp(28px, 5vw, 48px)' }}>
+                <h3 style={{ fontSize: 'clamp(18px, 4vw, 22px)', fontWeight: 700, marginBottom: 'clamp(14px, 3vw, 24px)', fontFamily: 'Outfit, sans-serif' }}>Quick Actions</h3>
                 <div className="grid-cols-3">
                     {[
                         { to: '/chat', icon: '🤖', title: 'Ask PlacementBot', desc: 'Get placement guidance, interview tips, and career advice from AI.', color: 'var(--accent-1)' },
@@ -60,10 +60,10 @@ export default function Dashboard() {
                         { to: '/analytics', icon: '📊', title: 'View Analytics', desc: 'See your top skills, keyword insights, and improvement areas.', color: 'var(--green)' },
                     ].map(({ to, icon, title, desc, color }) => (
                         <Link key={to} to={to} style={{ textDecoration: 'none' }}>
-                            <div className="glass-card" style={{ padding: '32px 28px', cursor: 'pointer', height: '100%', boxShadow: 'var(--shadow-sm)' }}>
-                                <div style={{ fontSize: 36, marginBottom: 16, filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))' }}>{icon}</div>
-                                <h4 style={{ fontWeight: 700, fontSize: 18, marginBottom: 10, color }}>{title}</h4>
-                                <p style={{ fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.6 }}>{desc}</p>
+                            <div className="glass-card" style={{ padding: 'clamp(20px, 4vw, 32px) clamp(18px, 3vw, 28px)', cursor: 'pointer', height: '100%', display: 'flex', flexDirection: 'column' }}>
+                                <div style={{ fontSize: 'clamp(32px, 8vw, 40px)', marginBottom: 'clamp(12px, 2vw, 16px)', filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.1))' }}>{icon}</div>
+                                <h4 style={{ fontWeight: 700, fontSize: 'clamp(16px, 3vw, 18px)', marginBottom: 'clamp(6px, 1vw, 10px)', color }}>{title}</h4>
+                                <p style={{ fontSize: 'clamp(13px, 2vw, 14px)', color: 'var(--text-secondary)', lineHeight: 1.5, flex: 1 }}>{desc}</p>
                             </div>
                         </Link>
                     ))}
@@ -73,8 +73,8 @@ export default function Dashboard() {
             <div className="grid-cols-2 animate-in stagger-3">
                 {/* Top Skills */}
                 {stats?.topSkills?.length > 0 && (
-                    <div className="glass-card" style={{ padding: 32 }}>
-                        <h3 style={{ fontSize: 20, fontWeight: 700, marginBottom: 20, fontFamily: 'Outfit, sans-serif' }}>🏆 Your Top Skills</h3>
+                    <div className="glass-card" style={{ padding: 'clamp(20px, 4vw, 32px)' }}>
+                        <h3 style={{ fontSize: 'clamp(17px, 3.5vw, 20px)', fontWeight: 700, marginBottom: 'clamp(14px, 3vw, 20px)', fontFamily: 'Outfit, sans-serif' }}>🏆 Your Top Skills</h3>
                         <div className="skill-tags">
                             {stats.topSkills.map(({ skill, count }) => (
                                 <span key={skill} className="skill-tag">
@@ -86,8 +86,8 @@ export default function Dashboard() {
                 )}
 
                 {/* Tips */}
-                <div className="glass-card" style={{ padding: 32 }}>
-                    <h3 style={{ fontSize: 20, fontWeight: 700, marginBottom: 20, fontFamily: 'Outfit, sans-serif' }}>💡 Placement Tips</h3>
+                <div className="glass-card" style={{ padding: 'clamp(20px, 4vw, 32px)' }}>
+                    <h3 style={{ fontSize: 'clamp(17px, 3.5vw, 20px)', fontWeight: 700, marginBottom: 'clamp(14px, 3vw, 20px)', fontFamily: 'Outfit, sans-serif' }}>💡 Placement Tips</h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                         {[
                             'Start DSA practice early — top companies prioritize it.',
