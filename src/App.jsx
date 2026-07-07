@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './context/AuthContext';
@@ -16,13 +17,19 @@ import Profile from './pages/Profile';
 
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   if (loading) return <div className="page-body"><span className="spinner" /></div>;
   if (!user) return <Navigate to="/login" replace />;
+
   return (
     <div className="app-layout">
-      <Sidebar />
+      <Sidebar
+        isMobileMenuOpen={isMobileMenuOpen}
+        onMobileClose={() => setIsMobileMenuOpen(false)}
+      />
       <div className="main-content">
-        <Navbar />
+        <Navbar onMenuToggle={() => setIsMobileMenuOpen(prev => !prev)} />
         {children}
       </div>
     </div>
