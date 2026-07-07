@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useRef } from 'react';
-import api from '../services/api';
+import api, { API_BASE_URL } from '../services/api';
 import toast from 'react-hot-toast';
 
 const ChatContext = createContext();
@@ -17,7 +17,7 @@ export const ChatProvider = ({ children }) => {
 
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api'}/chat/send`, {
+            const response = await fetch(`${API_BASE_URL}/chat/send`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
